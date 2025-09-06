@@ -3,11 +3,12 @@ import './App.css'
 import Navbar from './components/Navbar'
 import LoginForm from './components/LoginForm'
 import SignupForm from './components/SignupForm'
+import ForgotPassword from './components/ForgotPassword'
 import Footer from './components/Footer'
 
 function App() {
   const [isDarkTheme, setIsDarkTheme] = useState(false)
-  const [isLoginForm, setIsLoginForm] = useState(true)
+  const [currentForm, setCurrentForm] = useState('login') // 'login', 'signup', 'forgot-password'
 
   const toggleTheme = () => {
     setIsDarkTheme(!isDarkTheme)
@@ -27,11 +28,15 @@ function App() {
   }, [isDarkTheme])
 
   const switchToSignup = () => {
-    setIsLoginForm(false)
+    setCurrentForm('signup')
   }
 
   const switchToLogin = () => {
-    setIsLoginForm(true)
+    setCurrentForm('login')
+  }
+
+  const switchToForgotPassword = () => {
+    setCurrentForm('forgot-password')
   }
 
   return (
@@ -45,16 +50,23 @@ function App() {
       
       <main className="flex-1 flex items-center justify-center px-4 py-8 bg-gray-50 dark:bg-black min-h-0">
         <div className="w-full max-w-md">
-          {isLoginForm ? (
-            <LoginForm onSwitchToSignup={switchToSignup} />
-          ) : (
+          {currentForm === 'login' && (
+            <LoginForm 
+              onSwitchToSignup={switchToSignup} 
+              onForgotPassword={switchToForgotPassword}
+            />
+          )}
+          {currentForm === 'signup' && (
             <SignupForm onSwitchToLogin={switchToLogin} />
           )}
-        </div>
+          {currentForm === 'forgot-password' && (
+            <ForgotPassword onBackToLogin={switchToLogin} />
+          )}
+      </div>
       </main>
 
       <Footer isDarkTheme={isDarkTheme} />
-    </div>
+      </div>
   )
 }
 

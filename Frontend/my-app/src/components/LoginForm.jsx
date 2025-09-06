@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const LoginForm = ({ onSwitchToSignup }) => {
+const LoginForm = ({ onSwitchToSignup, onForgotPassword }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -77,9 +77,13 @@ const LoginForm = ({ onSwitchToSignup }) => {
           </div>
 
           <div className="text-sm">
-            <a href="#" className="form-link">
+            <button
+              type="button"
+              onClick={onForgotPassword}
+              className="form-link"
+            >
               Forgot Password?
-            </a>
+            </button>
           </div>
         </div>
 
