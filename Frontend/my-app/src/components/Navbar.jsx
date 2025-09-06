@@ -15,7 +15,7 @@ const Navbar = ({ isDarkTheme, toggleTheme, onLoginClick, onSignupClick }) => {
   ]
 
   return (
-    <nav className="bg-white dark:bg-gray-900 shadow-sm dark:shadow-black border-b border-gray-200 dark:border-gray-800">
+    <nav className="bg-white dark:bg-black shadow-sm dark:shadow-gray-900/50 border-b border-gray-200 dark:border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -45,7 +45,7 @@ const Navbar = ({ isDarkTheme, toggleTheme, onLoginClick, onSignupClick }) => {
               </button>
               <button
                 onClick={onSignupClick}
-                className="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200"
+                className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200"
               >
                 Sign Up
               </button>
@@ -57,7 +57,7 @@ const Navbar = ({ isDarkTheme, toggleTheme, onLoginClick, onSignupClick }) => {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors duration-200 border dark:border-gray-700"
               aria-label="Toggle theme"
             >
               {isDarkTheme ? (
@@ -74,7 +74,7 @@ const Navbar = ({ isDarkTheme, toggleTheme, onLoginClick, onSignupClick }) => {
             {/* Mobile menu button */}
             <button
               onClick={toggleMobileMenu}
-              className="md:hidden p-2 rounded-lg text-gray-600 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+              className="md:hidden p-2 rounded-lg text-gray-600 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors duration-200"
               aria-label="Toggle mobile menu"
             >
               <div className="space-y-1">
@@ -89,12 +89,12 @@ const Navbar = ({ isDarkTheme, toggleTheme, onLoginClick, onSignupClick }) => {
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-50 dark:bg-gray-800 rounded-lg mt-2 border border-gray-200 dark:border-gray-700">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-50 dark:bg-gray-900 rounded-lg mt-2 border border-gray-200 dark:border-gray-700">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white block px-3 py-2 text-base font-medium transition-colors duration-200"
+                  className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white block px-3 py-2 text-base font-medium transition-colors duration-200 rounded-md dark:hover:bg-gray-800"
                 >
                   {link.name}
                 </a>
@@ -104,7 +104,7 @@ const Navbar = ({ isDarkTheme, toggleTheme, onLoginClick, onSignupClick }) => {
                   onLoginClick()
                   setIsMobileMenuOpen(false)
                 }}
-                className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white block px-3 py-2 text-base font-medium transition-colors duration-200 w-full text-left"
+                className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white block px-3 py-2 text-base font-medium transition-colors duration-200 w-full text-left rounded-md dark:hover:bg-gray-800"
               >
                 Login
               </button>
@@ -113,7 +113,7 @@ const Navbar = ({ isDarkTheme, toggleTheme, onLoginClick, onSignupClick }) => {
                   onSignupClick()
                   setIsMobileMenuOpen(false)
                 }}
-                className="bg-primary-600 hover:bg-primary-700 text-white block px-3 py-2 rounded-lg text-base font-medium transition-colors duration-200 w-full"
+                className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white block px-3 py-2 rounded-lg text-base font-medium transition-colors duration-200 w-full mt-2"
               >
                 Sign Up
               </button>
